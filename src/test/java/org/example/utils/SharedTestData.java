@@ -1,68 +1,56 @@
 package org.example.utils;
 
-
-//centralized storage for test data shared across all test classes
 public class SharedTestData {
 
-    // tokens for both admin and customer
-    private static String adminToken;
-    private static String customerToken;
+    private static final ThreadLocal<String> adminToken = new ThreadLocal<>();
+    private static final ThreadLocal<String> customerToken = new ThreadLocal<>();
+    private static final ThreadLocal<String> customerUsername = new ThreadLocal<>();
+    private static final ThreadLocal<String> createdItemId = new ThreadLocal<>();
+    private static final ThreadLocal<String> createdOrderId = new ThreadLocal<>();
 
-    // user credentials for login in
-    private static String customerUsername;
-
-    // create the ID for rest of test to relay on
-    private static String createdItemId;
-    private static String createdOrderId;
-
-    // backup ID in case of failing of the main item_id
     private static final String BACKUP_ITEM_ID = "1770891560866";
 
-    // methods for tokens
     public static void setAdminToken(String token) {
-        adminToken = token;
+        adminToken.set(token);
     }
 
     public static String getAdminToken() {
-        return adminToken;
+        return adminToken.get();
     }
 
     public static void setCustomerToken(String token) {
-        customerToken = token;
+        customerToken.set(token);
     }
 
     public static String getCustomerToken() {
-        return customerToken;
+        return customerToken.get();
     }
 
-    // methods for usernames
     public static void setCustomerUsername(String username) {
-        customerUsername = username;
+        customerUsername.set(username);
     }
 
     public static String getCustomerUsername() {
-        return customerUsername;
+        return customerUsername.get();
     }
 
-    // methods for item_id
     public static void setCreatedItemId(String id) {
-        createdItemId = id;
+        createdItemId.set(id);
     }
 
     public static String getCreatedItemId() {
-        return createdItemId != null ? createdItemId : BACKUP_ITEM_ID;
+        String id = createdItemId.get();
+        return id != null ? id : BACKUP_ITEM_ID;
     }
 
-    // methods for orders
     public static void setCreatedOrderId(String id) {
-        createdOrderId = id;
+        createdOrderId.set(id);
     }
 
     public static String getCreatedOrderId() {
-        return createdOrderId;
+        return createdOrderId.get();
     }
 
-    // method for the backup_id
     public static String getBackupItemId() {
         return BACKUP_ITEM_ID;
     }

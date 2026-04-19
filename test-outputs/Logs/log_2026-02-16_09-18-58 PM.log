@@ -1,0 +1,80 @@
+[DEBUG] 16-02-2026 21:18:58 [main] [org.testng.TestNG] - suiteXmlPath: "C:\Users\NoahRuess\Desktop\ITI\API\RestAssure\ecommerce-rest-assured-automation\testng.xml"
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:org.example.testcases.items.ItemCreationTests@7e985ce9] -1932706602
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE ItemCreationTests.shouldCreateItemSuccessfully_WhenAdminCreatesWithValidData()[pri:1, instance:org.example.testcases.items.ItemCreationTests@7e985ce9] -218274388
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE ItemRetrievalTests.shouldRetrieveItemSuccessfully_WhenItemExists()[pri:2, instance:org.example.testcases.items.ItemRetrievalTests@25ddbbbb] 1808852470
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE ItemUpdateTests.shouldUpdateItemSuccessfully_WhenItemExists()[pri:3, instance:org.example.testcases.items.ItemUpdateTests@c7a975a] 2091095901
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:org.example.testcases.orders.OrderCreationTests@2cf23c81] 992418926
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE OrderCreationTests.shouldCreateOrderSuccessfully_WhenValidItemsProvided()[pri:4, instance:org.example.testcases.orders.OrderCreationTests@2cf23c81] -634650918
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE OrderRetrievalTests.shouldRetrieveAllOrdersSuccessfully_WhenOrdersExist()[pri:5, instance:org.example.testcases.orders.OrderRetrievalTests@7c22d4f] 825937094
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE OrderCheckoutTests.shouldCheckoutSuccessfully_WhenCustomerHasValidOrder()[pri:6, instance:org.example.testcases.orders.OrderCheckoutTests@2b62442c] -321086577
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE OrderCheckoutTests.shouldRetrievePaidOrdersSuccessfully_WhenPaidOrdersExist()[pri:7, instance:org.example.testcases.orders.OrderCheckoutTests@2b62442c] 553995726
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE OrderDeletionTests.shouldDeleteOrderSuccessfully_WhenOrderIsPaid()[pri:8, instance:org.example.testcases.orders.OrderDeletionTests@4fcee388] -419836376
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:null] -823595405
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE BaseTest.globalSetup()[pri:0, instance:org.example.testcases.items.ItemDeletionTests@64bc21ac] 1928397209
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ADDING NODE ItemDeletionTests.shouldDeleteItemSuccessfully_WhenItemExists()[pri:9, instance:org.example.testcases.items.ItemDeletionTests@64bc21ac] -888148266
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ================ SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] =============== DONE SORTING
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== SORTED NODES
+[TRACE] 16-02-2026 21:18:58 [main] [org.testng.internal.Graph] - [Graph] ====== END SORTED NODES
+[INFO] 16-02-2026 21:18:58 [main] [org.testng.internal.Utils] - [TestNG] Running:
+  C:\Users\NoahRuess\Desktop\ITI\API\RestAssure\ecommerce-rest-assured-automation\testng.xml
+
