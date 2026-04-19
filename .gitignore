@@ -10,6 +10,10 @@ target/
 *.iml
 *.ipr
 
+# Ignore test result folders
+test-output/
+test-outputs/
+
 ### Eclipse ###
 .apt_generated
 .classpath
