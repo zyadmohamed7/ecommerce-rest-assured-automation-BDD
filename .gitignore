@@ -11,8 +11,8 @@ target/
 *.ipr
 
 # Ignore test result folders
-test-output/
-test-outputs/
+**/test-output/
+**/test-outputs/
 
 ### Eclipse ###
 .apt_generated
