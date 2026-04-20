@@ -1,21 +1,22 @@
 @boundaries
 Feature: Boundary and Negative Payload Validation
+
+  Background:
+    Given the admin token is available
+
   @regression
   Scenario: Cannot create an item with negative stock
-    Given the admin token is available
     When the admin maliciously attempts to create an item with a stock of -1
     Then the response status code should be 400
 
   @regression
   Scenario: Cannot create an item with negative price
-    Given the admin token is available
     When the admin maliciously attempts to create an item with a price of -10.50
     Then the response status code should be 400
 
   @regression
   Scenario: Cannot checkout the exact same order twice
-    Given the admin token is available
-    And the customer token is available
+    Given the customer token is available
     And the customer username is available
     And the created item ID is available
     When the admin sends a POST request to create a new order

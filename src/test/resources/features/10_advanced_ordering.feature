@@ -17,7 +17,7 @@ Feature: Advanced Ordering Logic
   Scenario: Order total must match quantity * item price
     When the admin creates an order for the customer with 5 copies
     Then the response status code should be 201
-    # Customer token is set inside verification steps or we set it manually
+    # Customer token is set inside verification steps
     And the order total should be correct based on item price and quantity
 
   @negative @boundaries
@@ -28,7 +28,7 @@ Feature: Advanced Ordering Logic
 
   @negative @stock
   Scenario: Cannot order more items than currently in stock
-    # Ordering 1001 should safely exceed any random stock generated (1-100)
+    # Ordering 1001 should exceed any random stock generated (1-100)
     When the admin creates an order for the customer with 1001 copies
     Then the response status code should be 400
     And the response error message should say "Not enough stock"
