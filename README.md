@@ -39,6 +39,8 @@ A professional-grade REST API automation engine built with **Java**, **Rest-Assu
 | **Log4j2 + SLF4J** | Professional Logging System |
 | **Hamcrest** | Readable Assertion DSL |
 | **Jackson** | JSON Serialization/Deserialization |
+| **Allure Report** | Professional HTML Reporting & Visualization |
+| **Owner** | Environment & Properties Management |
 
 ---
 
@@ -108,16 +110,25 @@ mvn test -D"cucumber.filter.tags=@smoke"
 
 ---
 
-## 📊 Reporting & Logging
+### 📊 Allure Reporting (Recommended)
+This framework is tightly integrated with **Allure**. Every API call made through the `ApiClient` is automatically recorded with its headers, body, and response.
 
-### Console Logging
-Powered by **Log4j2**, providing clean, actionable logs with colored headers for scenario boundaries. Logs follow the structure:
+**To view the interactive dashboard:**
+1. Run your tests: `mvn clean test`
+2. Generate and open the report:
+   ```bash
+   mvn allure:serve
+   ```
+
+### 📄 Standard Cucumber Reports
+Standard HTML summaries are also available in:
+- `target/cucumber-reports/index.html`
+
+### 📝 Console Logging
+Powered by **Log4j2**, providing clean, actionable logs with colored headers for scenario boundaries. Logs include:
 - `[INFO]` - Request/Response summaries.
 - `[WARN]` - Retry attempts & Transient failures.
 - `[ERROR]` - Assertion failures & Structural issues.
-
-### JSON & HTML Reports
-Standard Cucumber reports are generated in the `target/cucumber-reports` directory after every execution.
 
 ---
 
