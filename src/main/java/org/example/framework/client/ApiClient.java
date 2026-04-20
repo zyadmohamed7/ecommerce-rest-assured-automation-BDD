@@ -24,6 +24,6 @@ public class ApiClient {
                     .spec(RequestSpecFactory.getResponseSpec())
                     .extract()
                     .response();
-        }, 5, 2000, 3000);
+        }, 5, 3000);
     }
 }

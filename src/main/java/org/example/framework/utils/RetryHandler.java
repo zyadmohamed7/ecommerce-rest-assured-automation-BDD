@@ -9,28 +9,32 @@ public class RetryHandler {
      * Executes a task with a retry logic.
      * @param task The task to execute (e.g. an API call).
      * @param maxRetries Maximum number of attempts.
-     * @param baselineDelayMs Initial delay before every call.
      * @param retryDelayMs Delay between retries after a failure.
      * @return The response from the task.
      */
-    public static Response handle(Callable<Response> task, int maxRetries, int baselineDelayMs, int retryDelayMs) {
+    public static Response handle(Callable<Response> task, int maxRetries, int retryDelayMs) {
         int currentAttempt = 0;
 
         while (currentAttempt < maxRetries) {
             try {
-                // Baseline breather
-                Thread.sleep(baselineDelayMs);
-
-                return task.call();
+                // Execute the task IMMEDIATELY without waiting
+                Response response = task.call();
+                
+                // If we get a 5xx Server Error, treat it as a failure so we can retry!
+                if (response != null && response.statusCode() >= 500) {
+                    throw new RuntimeException("Server returned HTTP " + response.statusCode());
+                }
+                
+                return response;
 
             } catch (Exception e) {
                 currentAttempt++;
                 if (currentAttempt >= maxRetries) {
                     throw new RuntimeException("Action failed after " + maxRetries + " attempts due to: " + e.getMessage());
                 }
-                FrameworkLogger.warn("⚠️ Connection/Server Error. Retrying in " + retryDelayMs + "ms... (Attempt " + currentAttempt + ")");
+                FrameworkLogger.warn("⚠️ API Failure: " + e.getMessage() + ". Retrying in " + retryDelayMs + "ms... (Attempt " + currentAttempt + ")");
                 try {
-                    Thread.sleep(retryDelayMs);
+                    Thread.sleep(retryDelayMs); // Only sleep AFTER a failure
                 } catch (InterruptedException ignored) {}
             }
         }
