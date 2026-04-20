@@ -61,7 +61,7 @@ public class LoginSteps {
                 .then()
                 .assertThat()
                 .body("token", notNullValue())
-                .body("token", not(isEmptyString()))
+                .body("token", not(emptyString()))
                 .extract()
                 .as(AdminToken.class);
 
@@ -78,7 +78,7 @@ public class LoginSteps {
                 .then()
                 .assertThat()
                 .body("token", notNullValue())
-                .body("token", not(isEmptyString()))
+                .body("token", not(emptyString()))
                 .extract()
                 .as(CustomerToken.class);
 

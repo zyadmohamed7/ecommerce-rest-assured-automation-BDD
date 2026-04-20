@@ -4,7 +4,6 @@ import io.cucumber.java.en.*;
 import org.example.context.TestContext;
 import org.example.testutils.SharedTestData;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import org.example.framework.assertions.ApiAssert;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
