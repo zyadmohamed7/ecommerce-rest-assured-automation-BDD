@@ -74,11 +74,11 @@ ProjectRoot/
 This framework goes beyond standard CRUD testing by enforcing:
 
 ### 1. IDOR Security Isolation
-We explicitly verify that orders belonging to User A are **invisible** and **inaccessible** to User B.
+Explicitly verify that orders belonging to User A are **invisible** and **inaccessible** to User B.
 *   *Feature*: `09_security_idor.feature`
 
 ### 2. Role-Based Access Control (RBAC)
-We differentiate between `Admin` and `Customer` roles, verifying that restricted actions (like `DELETE /orders`) are blocked for non-admin users.
+Differentiate between `Admin` and `Customer` roles, verifying that restricted actions (like `DELETE /orders`) are blocked for non-admin users.
 *   *Feature*: `11_security_rbac.feature`
 
 ### 3. Mathematical Total Accuracy
