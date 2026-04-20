@@ -1,483 +1,129 @@
-# 🚀 E-Commerce API Automation Framework
+# 🚀 Hardened E-Commerce API Automation Framework (BDD)
 
-A robust REST API automation testing framework built with **Rest Assured**, **TestNG**, and **Allure Reports** for comprehensive E-Commerce API testing.
-
+A professional-grade REST API automation engine built with **Java**, **Rest-Assured**, and **Cucumber 7**. This framework is engineered for resilience, security hardening (IDOR/RBAC), and complex business logic validation.
 
 ## 📋 Table of Contents
 
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Running Tests](#-running-tests)
-- [Generating Reports](#-generating-reports)
-- [Test Scenarios](#-test-scenarios)
-- [Key Components](#-key-components)
-- [Contributing](#-contributing)
-
+- [✨ Features](#-features)
+- [🛠 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🛡️ Security & Business Logic](#-security--business-logic)
+- [🧪 Running Tests](#-running-tests)
+- [📊 Reporting & Logging](#-reporting--logging)
+- [👨‍💻 Author](#-author)
 
 ---
 
 ## ✨ Features
 
-- ✅ **Complete API Test Coverage** - Login, Items Management, Order Flow
-- ✅ **Data-Driven Testing** - TestNG DataProvider with JSON data files
-- ✅ **Dynamic Test Data** - JavaFaker integration for realistic test data
-- ✅ **Beautiful Reports** - Allure reporting with detailed test insights
-- ✅ **Request/Response Logging** - Comprehensive API call tracking
-- ✅ **POJO Pattern** - Clean object mapping with Jackson
-- ✅ **Configurable Environments** - Easy switching between environments
-- ✅ **Reusable Components** - Modular endpoint classes
-- ✅ **CI/CD Ready** - Maven-based execution
+- ✅ **Behavior Driven Development (BDD)** - Pure Cucumber JVM 7 implementation.
+- ✅ **Clean Architecture** - Distinguishing between "Framework" logic and "Test" implementation.
+- ✅ **Resilience (Self-Healing)** - Custom `RetryHandler` with exponential backoff for flaky endpoints.
+- ✅ **Security Hardening** - Proactive IDOR isolation checks and Role-Based Access Control (RBAC) validation.
+- ✅ **Mathematical Validation** - Automated checks for order total accuracy (`Price * Quantity == Total`).
+- ✅ **State Management** - Clean dependency injection using **PicoContainer** (`TestContext`).
+- ✅ **Advanced Data Generation** - Intelligent POJO-based data providers with **JavaFaker**.
+- ✅ **CI/CD Ready** - Maven-based execution with flexible tag filtering.
 
 ---
 
 ## 🛠 Tech Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Java | 8+ | Programming Language |
-| Maven | 3.6+ | Build & Dependency Management |
-| Rest Assured | 5.5.6 | API Testing Framework |
-| TestNG | 7.11.0 | Test Execution Framework |
-| Jackson | 2.17.0 | JSON Serialization/Deserialization |
-| Allure | 2.24.0 | Test Reporting |
-| JavaFaker | 1.0.2 | Test Data Generation |
-| Hamcrest | 3.0 | Assertion Library |
-| Log4j2 | 2.23.1 | Logging Framework |
+| Technology | Purpose |
+|------------|---------|
+| **Java 21/17** | Core Programming Language |
+| **Cucumber 7** | BDD Framework & Test Runner |
+| **JUnit 5** | Underlying Test Engine |
+| **Rest Assured** | DSL for REST API Testing |
+| **PicoContainer** | Dependency Injection (Shared State) |
+| **Log4j2 + SLF4J** | Professional Logging System |
+| **Hamcrest** | Readable Assertion DSL |
+| **Jackson** | JSON Serialization/Deserialization |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-ProjectApi/
-├── src/test/
-│   ├── java/org/example/
-│   │   ├── apis/                    # API Endpoint Classes
-│   │   │   ├── BaseApis.java        # Base RequestSpecification
-│   │   │   ├── LoginEndpoint.java   # Login API
-│   │   │   ├── ItemsEndpoint.java   # Items CRUD APIs
-│   │   │   └── OrdersEndpoint.java  # Orders & Checkout APIs
-│   │   ├── pojos/                   # Plain Old Java Objects
-│   │   │   ├── UserCredentialsPojo.java
-│   │   │   ├── CreateItemPojo.java
-│   │   │   ├── CreateOrderPojo.java
-│   │   │   ├── AdminToken.java
-│   │   │   └── CustomerToken.java
-│   │   ├── providers/               # TestNG DataProviders
-│   │   │   └── UserDataProvider.java
-│   │   ├── testcases/               # Test Classes
-│   │   │   ├── FlowTest.java        # Main E2E Flow Tests
-│   │   │   ├── NegativeTests.java   # Negative Test Cases
-│   │   │   └── LoginAnotherWay.java # Alternative Login Tests
-│   │   ├── utils/                   # Utility Classes
-│   │   │   ├── ConfigReader.java    # Configuration Reader
-│   │   │   └── JsonUtils.java       # JSON File Handler
-│   │   ├── datagenerators/          # Test Data Generators
-│   │   │   ├── ItemDataGenerator.java
-│   │   │   ├── OrderDataGenerator.java
-│   │   │   └── UserDataGenerator.java
-│   │   └── listeners/               # TestNG Listeners
-│   │       ├── RetryAnalyzer.java      
-│   │       ├── RetryListener.java
-    │       ├── TestListener.java    # Test Execution Listener
-│   └── resources/
-│       ├── Data/
-│       │   └── users.json           # Test User Credentials
-│       ├── config.properties        # Environment Configuration
-│       └── testng.xml              # TestNG Suite Configuration
-├── pom.xml                         # Maven Dependencies
-└── README.md                       # Project Documentation
+ProjectRoot/
+├── src/main/java/org/example/framework/ 
+│   ├── apis/               # Fluent API Wrapper classes
+│   ├── auth/               # Global Token & Session Management
+│   ├── client/             # Resilience-aware Base Client (ApiClient)
+│   ├── config/             # Routes (Endpoints) & Configuration
+│   ├── assertions/         # Domain-Specific Assertions (ApiAssert)
+│   └── utils/              # Resiliency Handlers & Logger Wrappers
+├── src/test/java/org/example/
+│   ├── context/            # PicoContainer TestContext (Shared State)
+│   ├── stepdefinitions/    # Glue Code for Feature files
+│   ├── hooks/              # Scenario Hooks (Setup/Teardown)
+│   └── runners/            # Cucumber JUnit 5 Runners
+├── src/test/resources/
+│   ├── features/           # Gherkin Scenarios (Hardening/Security/Logic)
+│   ├── Data/               # External Test Data (users.json)
+│   └── log4j2.xml          # Logging Configuration
+└── pom.xml                 # Maven Dependency Management
 ```
 
 ---
 
-## 📦 Prerequisites
+## 🛡️ Security & Business Logic
 
-Before running this project, ensure you have:
+This framework goes beyond standard CRUD testing by enforcing:
 
-- **Java JDK 8+** installed ([Download](https://www.oracle.com/java/technologies/javase-downloads.html))
-- **Maven 3.6+** installed ([Download](https://maven.apache.org/download.cgi))
-- **Allure CLI** (Optional, for command-line report generation) ([Install Guide](https://docs.qameta.io/allure/#_installing_a_commandline))
-- **Git** installed ([Download](https://git-scm.com/downloads))
-- IDE: **IntelliJ IDEA** or **Eclipse** (Recommended)
+### 1. IDOR Security Isolation
+We explicitly verify that orders belonging to User A are **invisible** and **inaccessible** to User B.
+*   *Feature*: `09_security_idor.feature`
 
-### Verify Installation
+### 2. Role-Based Access Control (RBAC)
+We differentiate between `Admin` and `Customer` roles, verifying that restricted actions (like `DELETE /orders`) are blocked for non-admin users.
+*   *Feature*: `11_security_rbac.feature`
 
-```bash
-java -version
-mvn -version
-allure --version  # Optional
-```
-
----
-
-## 🚀 Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/yourusername/ProjectApi.git
-cd ProjectApi
-```
-
-### 2. Install Dependencies
-
-```bash
-mvn clean install
-```
-
-This will download all required dependencies defined in `pom.xml`.
-
-### 3. Import into IDE
-
-**IntelliJ IDEA:**
-1. Open IntelliJ → **File** → **Open**
-2. Select the `ProjectApi` folder
-3. Wait for Maven to import dependencies
-
-**Eclipse:**
-1. **File** → **Import** → **Existing Maven Projects**
-2. Browse to `ProjectApi` folder
-3. Click **Finish**
-
----
-
-## ⚙️ Configuration
-
-### 1. Update Base URL
-
-Edit `src/test/resources/config.properties`:
-
-```properties
-base.url= http://localhost:3000
-```
-
-### 2. Update Test Data
-
-Edit `src/test/resources/Data/users.json`:
-
-```json
-[
-  {
-    "username": "admin@example.com",
-    "password": "adminPassword123"
-  },
-  {
-    "username": "customer@example.com",
-    "password": "customerPassword123"
-  }
-]
-```
-
-### 3. Configure TestNG Suite
-
-Edit `src/test/resources/testng.xml` to customize test execution:
-
-```xml
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="API Test Suite">
-    <test name="E-Commerce API Tests">
-        <classes>
-            <class name="org.example.testcases.FlowTest"/>
-        </classes>
-    </test>
-</suite>
-```
+### 3. Mathematical Total Accuracy
+The framework fetches the price of an item at creation, calculates the expected total based on quantity, and verifies that the API's `total` field is mathematically correct.
+*   *Feature*: `10_advanced_ordering.feature`
 
 ---
 
 ## 🧪 Running Tests
 
-### Method 1: Maven Command Line
+Execution is simplified through Maven and Cucumber Tags.
 
+### Run Full Regression
 ```bash
-# Run all tests
 mvn clean test
-
-# Run specific test class
-mvn test -Dtest=FlowTest
-
-# Run with specific TestNG suite
-mvn test -DsuiteXmlFile=testng.xml
 ```
 
-### Method 2: IntelliJ IDEA
-
-1. Right-click on `testng.xml`
-2. Select **Run 'testng.xml'**
-
-Or:
-
-1. Right-click on any test class (e.g., `FlowTest.java`)
-2. Select **Run 'FlowTest'**
-
-### Method 3: Run Individual Tests
-
-1. Open test class in editor
-2. Click the green play button next to `@Test` method
-3. Select **Run**
-
----
-
-## 📊 Generating Reports
-
-### Allure Reports (Recommended)
-
-#### Option 1: Auto-Open in Browser
-
+### Run by Specific Tags
 ```bash
-# Run tests and generate report
-mvn clean test
+# Run only security tests
+mvn test -D"cucumber.filter.tags=@security"
 
-# Generate and open report
-mvn allure:serve
-```
+# Run advanced business logic tests
+mvn test -D"cucumber.filter.tags=@ordering"
 
-This will automatically:
-- Generate the Allure report
-- Start a local web server
-- Open the report in your default browser
-
-#### Option 2: Generate Static HTML Report
-
-```bash
-# Run tests
-mvn clean test
-
-# Generate static report
-mvn allure:report
-
-# Open manually
-open target/site/allure-maven-plugin/index.html
-```
-
-#### Option 3: Using Allure CLI
-
-```bash
-# Run tests
-mvn clean test
-
-# Generate and serve report
-allure serve target/allure-results
-```
-
-### Sample Allure Report Features
-
-- 📈 **Overview Dashboard** - Pass/Fail statistics, trends
-- 🔍 **Test Details** - Step-by-step execution with screenshots
-- 🌐 **Request/Response** - Complete API call details
-- 📋 **Categorization** - Tests grouped by Epic, Feature, Story
-- ⏱️ **Timeline** - Test execution timeline
-- 📊 **Graphs** - Duration, severity, and trend graphs
-
----
-
-## 🧩 Test Scenarios
-
-### Complete E2E Flow Test (`FlowTest.java`)
-
-This test executes a complete order flow:
-
-1. **Login** - Generate tokens for Admin and Customer users
-2. **Create Item** - Admin creates a new item
-3. **Get Item** - Retrieve item details by ID
-4. **Update Item** - Update existing item information
-5. **Create Order** - Customer creates an order with items
-6. **Get Order** - Retrieve order details
-7. **Checkout** - Customer checks out the order
-8. **Get Paid Orders** - Admin retrieves all paid orders
-9. **Delete Order** - Admin deletes the order
-10. **Delete Item** - Admin deletes the item
-
-### Test Execution Flow
-
-```
-┌─────────────────┐
-│  Setup Tokens   │ @BeforeClass
-└────────┬────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 1: Create Item        │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 2: Get Item           │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 3: Update Item        │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 4: Create Order       │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 5: Get Order          │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 6: Checkout Order     │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 7: Get Paid Orders    │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 8: Delete Order       │
-    └────┬────────────────────────────┘
-         │
-    ┌────▼────────────────────────────┐
-    │  Priority 9: Delete Item        │
-    └─────────────────────────────────┘
+# Run critical smoke suite
+mvn test -D"cucumber.filter.tags=@smoke"
 ```
 
 ---
 
-## 🔑 Key Components
+## 📊 Reporting & Logging
 
-### 1. BaseApis.java
+### Console Logging
+Powered by **Log4j2**, providing clean, actionable logs with colored headers for scenario boundaries. Logs follow the structure:
+- `[INFO]` - Request/Response summaries.
+- `[WARN]` - Retry attempts & Transient failures.
+- `[ERROR]` - Assertion failures & Structural issues.
 
-Centralized RequestSpecification with Allure integration:
-
-```java
-public static RequestSpecification getRequestSpecification() {
-    return new RequestSpecBuilder()
-            .setBaseUri(ConfigReader.getBaseUrl())
-            .setContentType(ContentType.JSON)
-            .addFilter(new AllureRestAssured())  // Captures all API calls
-            .build();
-}
-```
-
-### 2. DataProvider Pattern
-
-Dynamic user iteration from JSON:
-
-```java
-@DataProvider(name = "users")
-public static Object[][] getUsers() throws IOException {
-    List<UserCredentialsPojo> users = JsonUtils.readJsonFile("users.json", 
-            new TypeReference<List<UserCredentialsPojo>>() {});
-    Object[][] data = new Object[users.size()][1];
-    for (int i = 0; i < users.size(); i++) {
-        data[i][0] = users.get(i);
-    }
-    return data;
-}
-```
-
-### 3. POJO Pattern
-
-Clean object mapping:
-
-```java
-public class CreateItemPojo {
-    private String name;
-    private double price;
-    private int stock;
-    
-    // Constructor, Getters, Setters
-}
-```
-
-### 4. Endpoint Classes
-
-Reusable API methods:
-
-```java
-public class ItemsEndpoint {
-    public Response createitems(CreateItemPojo item) {
-        private static final String ITEMS_ENDPOINT = "/items";
-        return given()
-                .spec(BaseApis.getRequestSpecification())
-                .body(item)
-                .when()
-                .post(ITEMS_ENDPOINT);
-    }
-}
-```
-
-### 5. Data Generators
-
-Dynamic test data with JavaFaker:
-
-```java
-public static CreateItemPojo generateRandomItem() {
-    return new CreateItemPojo(
-            faker.commerce().productName(),
-            Double.parseDouble(faker.commerce().price(10.0, 1000.0)),
-            faker.number().numberBetween(1, 500)
-    );
-}
-```
-
----
-
-## 📝 Sample Test Case
-
-```java
-@Test(priority = 1)
-@Epic("E-Commerce API Testing")
-@Feature("Item Management")
-@Story("Create Items")
-@Severity(SeverityLevel.CRITICAL)
-@Description("Test creating a new item as Admin user")
-public void testCreateitems() throws InterruptedException {
-    ItemsEndpoint itemsEndpoint = new ItemsEndpoint(adminTokenData.getToken());
-    CreateItemPojo newItem = ItemDataGenerator.generateRandomItem();
-    
-    ItemIdPojo responsePost = itemsEndpoint.createitems(newItem)
-            .then()
-            .assertThat()
-            .statusCode(201)
-            .extract()
-            .as(ItemIdPojo.class);
-    
-    createdId = responsePost.getId();
-    System.out.println("Created item ID: " + createdId);
-}
-```
-
-
-## 📈 Best Practices
-
-✅ **Follow Page Object Model** - Separate endpoint logic  
-✅ **Use POJO Pattern** - Clean object mapping  
-✅ **Data-Driven Testing** - External test data files  
-✅ **Meaningful Test Names** - Descriptive method names  
-✅ **Proper Assertions** - Validate status codes and response bodies  
-✅ **Logging** - Use Log4j2 for debugging  
-✅ **Allure Annotations** - Enhance report readability  
-✅ **Configuration Management** - Externalize configurations
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. **Fork** the repository
-2. Create a **feature branch** (`git checkout -b feature/amazing-feature`)
-3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
-4. **Push** to the branch (`git push origin feature/amazing-feature`)
-5. Open a **Pull Request**
+### JSON & HTML Reports
+Standard Cucumber reports are generated in the `target/cucumber-reports` directory after every execution.
 
 ---
 
 ## 👨‍💻 Author
 
 **Zyad mohamed**
-- GitHub: https://github.com/zyadmohamed7
-- LinkedIn: https://www.linkedin.com/in/zyad-mohamed-182b7a363/
-- Email: zyadmohamed3711@gmail.com
-
-
-
-
-
+- **GitHub**: [zyadmohamed7](https://github.com/zyadmohamed7)
+- **LinkedIn**: [Zyad Mohamed](https://www.linkedin.com/in/zyad-mohamed-182b7a363/)
+- **Email**: zyadmohamed3711@gmail.com

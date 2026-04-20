@@ -5,7 +5,6 @@ Feature: Item Management
   Scenario: Admin creates a new item successfully
     Given the admin token is available
     When the admin sends a POST request to create a new item with random data
-    Then the system waits for deletion to complete
     And the response status code should be 201
     And the response body matches the "items" schema
     And the created item ID is stored for later use
@@ -24,5 +23,4 @@ Feature: Item Management
     When the admin sends a PUT request to update the created item with random data
     Then the response status code should be 200
     And the updated item data is reflected in the response
-    And the system waits for deletion to complete
 

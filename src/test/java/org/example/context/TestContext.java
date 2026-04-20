@@ -14,6 +14,22 @@ public class TestContext {
     private String updatedItemName;
     private double updatedItemPrice;
     private int updatedItemStock;
+    private int initialItemStock;
+    private double itemPrice;
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public int getInitialItemStock() {
+        return initialItemStock;
+    }
+    public void setInitialItemStock(int initialItemStock) {
+        this.initialItemStock = initialItemStock;
+    }
 
     public String getUpdatedItemName() {
         return updatedItemName;

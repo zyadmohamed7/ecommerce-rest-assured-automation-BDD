@@ -2,10 +2,11 @@ package org.example.stepdefinitions;
 
 import io.cucumber.java.en.*;
 import org.example.context.TestContext;
-import org.example.utils.SharedTestData;
+import org.example.testutils.SharedTestData;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.CoreMatchers.*;
+import org.example.framework.assertions.ApiAssert;
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class CommonSteps {
@@ -49,22 +50,41 @@ public class CommonSteps {
 
     @Then("the response status code should be {int}")
     public void theResponseStatusCodeShouldBe(int expectedStatusCode) {
-        int actualStatusCode = context.getResponse().getStatusCode();
-        assertThat(
-                "Expected status code " + expectedStatusCode + " but got " + actualStatusCode, actualStatusCode,
-                equalTo(expectedStatusCode)
-        );
+        ApiAssert.assertThatResponse(context.getResponse())
+                 .isStatusCode(expectedStatusCode);
+    }
+
+    @And("the response status code should be 204 or 404")
+    public void theResponseStatusCodeShouldBe204Or404() {
+        int code = context.getResponse().getStatusCode();
+        assertThat("Expected status 204 or 404, but found " + code,
+                code, anyOf(is(204), is(404)));
     }
 
     @Then("the response body matches the {string} schema")
     public void responseBodyMatchesSchema(String schemaName) {
-        context.getResponse()
-                .then()
-                .body(matchesJsonSchemaInClasspath(schemaName + "Schema.json"));
+        ApiAssert.assertThatResponse(context.getResponse())
+                 .matchesSchema(schemaName);
     }
 
-    @Then("the system waits for deletion to complete")
-    public void theSystemWaitsForDeletionToComplete() throws InterruptedException {
-        Thread.sleep(2000);
+    @Then("the response error message should say {string}")
+    public void theResponseErrorMessageShouldSay(String expectedMessage) {
+        String responseBody = context.getResponse().getBody().asString();
+        assertThat("Error message not found in response", responseBody, containsString(expectedMessage));
+    }
+
+    @And("the response body should not contain the created order ID")
+    public void theResponseBodyShouldNotContainTheCreatedOrderId() {
+        String responseBody = context.getResponse().getBody().asString();
+        String createdOrderId = context.getOrderId();
+        assertThat("Order ID was found in response but should be private",
+                responseBody, not(containsString(createdOrderId)));
+    }
+
+    @And("the response body should contain {string}")
+    public void theResponseBodyShouldContain(String expectedContent) {
+        String responseBody = context.getResponse().getBody().asString();
+        assertThat("Response body did not contain: " + expectedContent,
+                responseBody, containsString(expectedContent));
     }
 }

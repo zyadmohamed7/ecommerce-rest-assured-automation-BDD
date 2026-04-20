@@ -7,7 +7,6 @@ Feature: Order Management
     And the created item ID is available
     And the customer username is available
     When the admin sends a POST request to create a new order
-    Then the system waits for deletion to complete
     And the response status code should be 201
     And the response body matches the "orders" schema
     And the created order ID is stored for later use
@@ -30,6 +29,5 @@ Feature: Order Management
     Given the admin token is available
     When the admin sends a GET request to retrieve all paid orders
     Then the response status code should be 200
-    And the system waits for deletion to complete
     And all returned orders should have paid status
 
